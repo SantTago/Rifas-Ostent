@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifas O$TENT</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .product-item {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #f9f9f9;
+        }
+        .product-thumbnail {
+            max-width: 100px;
+            height: auto;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .product-fullsize {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .point-button {
+            margin: 2px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+        }
+        .point-button.selected {
+            background-color: #4CAF50;
+        }
+        .point-button.sold {
+            background-color: #FF5722;
+            cursor: not-allowed;
+        }
+        #checkout {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        #total-amount {
+            font-weight: bold;
+        }
+        #winners {
+            margin-top: 20px;
+        }
+        #winner-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        #winner-list li {
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        @media (max-width: 600px) {
+            .product-thumbnail {
+                max-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Rifas O$TENT</h1>
+    </header>
+
+    <section id="product-list">
+        <!-- Produtos serão carregados aqui -->
+    </section>
+
+    <section id="checkout">
+        <h3>Finalizar Compra</h3>
+        <label for="buyer-name">Nome:</label>
+        <input type="text" id="buyer-name" required>
+
+        <label for="buyer-phone">Telefone:</label>
+        <input type="text" id="buyer-phone" required>
+        
+        <label for="buyer-instagram">Instagram (@):</label>
+        <input type="text" id="buyer-instagram" required>
+
+        <p id="total-amount">Total: R$ 0,00</p>
+        <button id="complete-purchase">Completar Compra</button>
+    </section>
+
+    <section id="winners">
+        <h3>Histórico de Ganhadores</h3>
+        <ul id="winner-list"></ul>
+    </section>
+
+    <script>
+        let total = 0;
+        const pricePerPoint = 2.00;
+
+        function loadProducts() {
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = ''; // Limpa a lista de produtos antes de carregar
+
+            products.slice().reverse().forEach(product => { // Inverte a lista para mostrar novos produtos no topo
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+
+                const productTitle = document.createElement('h2');
+                productTitle.textContent = `${product.name} - R$ ${product.pricePerPoint} por ponto`;
+                productItem.appendChild(productTitle);
+
+                product.images.forEach(imageURL => {
+                    const productImg = document.createElement('img');
+                    productImg.src = imageURL;
+                    productImg.className = 'product-thumbnail';
+                    productImg.addEventListener('click', () => {
+                        const fullImage = document.createElement('img');
+                        fullImage.src = imageURL;
+                        fullImage.className = 'product-fullsize';
+                        document.body.appendChild(fullImage);
+                        fullImage.addEventListener('click', () => document.body.removeChild(fullImage));
+                    });
+                    productItem.appendChild(productImg);
+                });
+
+                const pointsSection = document.createElement('div');
+                pointsSection.className = 'points-section';
+                for (let i = 1; i <= product.points; i++) {
+                    const pointBtn = document.createElement('button');
+                    pointBtn.textContent = i;
+                    pointBtn.className = 'point-button';
+                    if (product.soldPoints.includes(i)) {
+                        pointBtn.classList.add('sold');
+                        pointBtn.disabled = true;
+                    } else {
+                        pointBtn.addEventListener('click', () => {
+                            pointBtn.classList.toggle('selected');
+                            if (pointBtn.classList.contains('selected')) {
+                                total += pricePerPoint;
+                            } else {
+                                total -= pricePerPoint;
+                            }
+                            document.getElementById('total-amount').textContent = `Total: R$ ${total.toFixed(2)}`;
+                        });
+                    }
+                    pointsSection.appendChild(pointBtn);
+                }
+                productItem.appendChild(pointsSection);
+
+                productList.appendChild(productItem);
+            });
+        }
+
+        function loadWinners() {
+            const winners = JSON.parse(localStorage.getItem('winners') || '[]');
+            const winnerList = document.getElementById('winner-list');
+            winnerList.innerHTML = '';
+            winners.sort((a, b) => new Date(b.date) - new Date(a.date)); // Ordena os mais recentes no topo
+            winners.forEach(winner => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${winner.productName} - Ganhador: ${winner.winner} - Data: ${winner.date}`;
+                winnerList.appendChild(listItem);
+            });
+        }
+
+        document.getElementById('complete-purchase').addEventListener('click', () => {
+            const buyerName = document.getElementById('buyer-name').value;
+            const buyerPhone = document.getElementById('buyer-phone').value;
+            const buyerInstagram = document.getElementById('buyer-instagram').value;
+
+            if (buyerName && buyerPhone && buyerInstagram && total > 0) {
+                alert(`Compra realizada com sucesso!\nNome: ${buyerName}\nTelefone: ${buyerPhone}\nInstagram: ${buyerInstagram}\nTotal: R$ ${total.toFixed(2)}`);
+                // Aqui você pode adicionar a lógica para processar o pagamento e enviar os dados para o servidor
+            } else {
+                alert('Por favor, preencha todos os campos e selecione pelo menos um ponto.');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+            loadWinners();
+        });
+    </script>
+</body>
+</html>
