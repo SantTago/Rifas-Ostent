@@ -120,12 +120,6 @@
                 productTitle.textContent = `${product.name} - R$ ${product.pricePerPoint} por ponto`;
                 productItem.appendChild(productTitle);
 
-                if (product.description) {
-                    const productDesc = document.createElement('p');
-                    productDesc.textContent = product.description;
-                    productItem.appendChild(productDesc);
-                }
-
                 product.images.forEach(imageURL => {
                     const productImg = document.createElement('img');
                     productImg.src = imageURL;
