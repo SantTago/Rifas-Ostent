@@ -109,10 +109,17 @@
 
         function loadProducts() {
             const products = JSON.parse(localStorage.getItem('products') || '[]');
+            console.log("Produtos carregados:", products); // Verifica se produtos estão carregados corretamente
             const productList = document.getElementById('product-list');
             productList.innerHTML = ''; // Limpa a lista de produtos antes de carregar
 
+            if (products.length === 0) {
+                productList.innerHTML = '<p>Nenhum produto encontrado.</p>';
+                return;
+            }
+
             products.slice().reverse().forEach(product => { // Inverte a lista para mostrar novos produtos no topo
+                console.log("Produto sendo adicionado:", product); // Verifica se o produto está sendo processado corretamente
                 const productItem = document.createElement('div');
                 productItem.className = 'product-item';
 
@@ -140,7 +147,7 @@
                     const pointBtn = document.createElement('button');
                     pointBtn.textContent = i;
                     pointBtn.className = 'point-button';
-                    if (product.soldPoints.includes(i)) {
+                    if (product.soldPoints && product.soldPoints.includes(i)) {
                         pointBtn.classList.add('sold');
                         pointBtn.disabled = true;
                     } else {

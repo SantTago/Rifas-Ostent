@@ -6,189 +6,198 @@
     <title>Admin - Rifas O$TENT</title>
     <style>
         /* Estilos gerais */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #2c2c2c;
-    color: #f1f1f1;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c2c2c;
+            color: #f1f1f1;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-header {
-    background-color: #1a1a1a;
-    color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-}
+        header {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+            padding: 20px;
+            text-align: center;
+        }
 
-h1 {
-    margin: 0;
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
 
-/* Seção de administração */
-#admin-section {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
+        /* Seção de administração */
+        #admin-section {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-.input-group {
-    margin-bottom: 15px;
-}
+        .input-group {
+            margin-bottom: 15px;
+        }
 
-.input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
 
-.input-group input[type="text"],
-.input-group input[type="number"],
-.input-group textarea {
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #444;
-    background-color: #2a2a2a;
-    color: #f1f1f1;
-    box-sizing: border-box;
-}
+        .input-group input[type="text"],
+        .input-group input[type="number"],
+        .input-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #2a2a2a;
+            color: #f1f1f1;
+            box-sizing: border-box;
+        }
 
-.input-group input[type="file"] {
-    width: 100%;
-    padding: 5px;
-    background-color: #2a2a2a;
-    color: #f1f1f1;
-}
+        .input-group input[type="file"] {
+            width: 100%;
+            padding: 5px;
+            background-color: #2a2a2a;
+            color: #f1f1f1;
+        }
 
-.input-group button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .input-group button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.input-group button:hover {
-    background-color: #0056b3;
-}
+        .input-group button:hover {
+            background-color: #0056b3;
+        }
 
-/* Lista de produtos */
-#product-list {
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
+        /* Lista de produtos */
+        #product-list {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
 
-.product-item {
-    margin-bottom: 20px;
-    padding: 15px;
-    border-bottom: 1px solid #444;
-}
+        .product-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-bottom: 1px solid #444;
+        }
 
-.product-item h2 {
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #f1f1f1;
-}
+        .product-item h2 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            color: #f1f1f1;
+        }
 
-.product-thumbnail {
-    max-width: 100px;
-    height: auto;
-    cursor: pointer;
-    margin-right: 10px;
-    border-radius: 4px;
-    transition: transform 0.3s ease;
-}
+        .product-thumbnail {
+            max-width: 100px;
+            height: auto;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
 
-.product-thumbnail:hover {
-    transform: scale(1.05);
-}
+        .product-thumbnail:hover {
+            transform: scale(1.05);
+        }
 
-.points-section {
-    margin-top: 10px;
-}
+        .points-section {
+            margin-top: 10px;
+        }
 
-.point-button {
-    margin: 2px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-}
+        .point-button {
+            margin: 2px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+        }
 
-.point-button.selected {
-    background-color: #4CAF50;
-}
+        .point-button.selected {
+            background-color: #4CAF50;
+        }
 
-.point-button.sold {
-    background-color: #FF5722;
-    cursor: not-allowed;
-}
+        .point-button.sold {
+            background-color: #FF5722;
+            cursor: not-allowed;
+        }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
-}
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
-.modal-content {
-    background-color: #444;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 8px;
-    text-align: center;
-}
+        .modal-content {
+            background-color: #444;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+            text-align: center;
+        }
 
-.modal-button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .modal-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.modal-button:hover {
-    background-color: #0056b3;
-}
+        .modal-button:hover {
+            background-color: #0056b3;
+        }
 
-.close-button {
-    background-color: #FF5722;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-}
+        .close-button {
+            background-color: #FF5722;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
 
+        .product-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .product-actions button {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
@@ -240,7 +249,7 @@ h1 {
             const productList = document.getElementById('product-list');
             productList.innerHTML = ''; // Limpa a lista de produtos antes de carregar
 
-            products.forEach(product => {
+            products.forEach((product, index) => {
                 const productItem = document.createElement('div');
                 productItem.className = 'product-item';
 
@@ -290,55 +299,124 @@ h1 {
                             pointBtn.classList.add('selected');
                             product.soldPoints.push(i);
                             localStorage.setItem('products', JSON.stringify(products));
+                            calculateTotalPrice();
                         });
                     }
                     pointsSection.appendChild(pointBtn);
                 }
-
                 productItem.appendChild(pointsSection);
 
-                // Adicionar o botão para sortear números
-                const drawButton = document.createElement('button');
-                drawButton.textContent = 'Sortear Número';
-                drawButton.className = 'modal-button';
-                drawButton.addEventListener('click', () => {
-                    const availablePoints = [...Array(product.points).keys()].map(n => n + 1).filter(n => !product.soldPoints.includes(n));
-                    const randomPoint = availablePoints[Math.floor(Math.random() * availablePoints.length)];
-                    document.getElementById('draw-result').textContent = `Número sorteado: ${randomPoint}`;
-                    document.getElementById('draw-result-modal').style.display = 'block';
+                const productActions = document.createElement('div');
+                productActions.className = 'product-actions';
+
+                const finalizeBtn = document.createElement('button');
+                finalizeBtn.textContent = 'Finalizar Produto';
+                finalizeBtn.addEventListener('click', () => {
+                    finalizeProduct(index);
                 });
-                productItem.appendChild(drawButton);
+
+                const drawBtn = document.createElement('button');
+                drawBtn.textContent = 'Sortear';
+                drawBtn.addEventListener('click', () => {
+                    drawWinner(index);
+                });
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Apagar Produto';
+                deleteBtn.addEventListener('click', () => {
+                    deleteProduct(index);
+                });
+
+                productActions.appendChild(finalizeBtn);
+                productActions.appendChild(drawBtn);
+                productActions.appendChild(deleteBtn);
+                productItem.appendChild(productActions);
 
                 productList.appendChild(productItem);
             });
+        }
+
+        function finalizeProduct(index) {
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            const product = products[index];
+
+            if (product.soldPoints.length === product.points) {
+                product.finalized = true;
+                localStorage.setItem('products', JSON.stringify(products));
+                loadProducts();
+            } else {
+                alert('Todos os pontos precisam ser vendidos antes de finalizar.');
+            }
+        }
+
+        function drawWinner(index) {
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            const product = products[index];
+
+            if (product.soldPoints.length === product.points) {
+                const randomIndex = Math.floor(Math.random() * product.soldPoints.length);
+                const winnerPoint = product.soldPoints[randomIndex];
+                const winnerMessage = `O vencedor é o ponto número ${winnerPoint}!`;
+
+                document.getElementById('draw-result').textContent = winnerMessage;
+                document.getElementById('draw-result-modal').style.display = 'block';
+
+                product.winner = winnerPoint;
+                localStorage.setItem('products', JSON.stringify(products));
+                loadProducts();
+            } else {
+                alert('Todos os pontos precisam ser vendidos antes de sortear.');
+            }
+        }
+
+        function deleteProduct(index) {
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            products.splice(index, 1);
+            localStorage.setItem('products', JSON.stringify(products));
+            loadProducts();
+        }
+
+        function saveProduct() {
+            const productName = document.getElementById('product-name').value;
+            const productDescription = document.getElementById('product-description').value;
+            const productImages = document.getElementById('product-images').files;
+            const points = parseInt(document.getElementById('points').value);
+            const pricePerPoint = parseFloat(document.getElementById('price-per-point').value);
+
+            const imageURLs = [];
+            for (let i = 0; i < productImages.length; i++) {
+                imageURLs.push(URL.createObjectURL(productImages[i]));
+            }
+
+            const products = JSON.parse(localStorage.getItem('products') || '[]');
+            products.unshift({
+                name: productName,
+                description: productDescription,
+                images: imageURLs,
+                points: points,
+                pricePerPoint: pricePerPoint,
+                soldPoints: [],
+                finalized: false,
+                winner: null
+            });
+
+            localStorage.setItem('products', JSON.stringify(products));
+            loadProducts();
+
+            document.getElementById('product-name').value = '';
+            document.getElementById('product-description').value = '';
+            document.getElementById('product-images').value = '';
+            document.getElementById('points').value = '10';
+            document.getElementById('price-per-point').value = '2.00';
         }
 
         function closeModal() {
             document.getElementById('draw-result-modal').style.display = 'none';
         }
 
-        document.getElementById('save-product').addEventListener('click', () => {
-            const name = document.getElementById('product-name').value;
-            const description = document.getElementById('product-description').value;
-            const images = Array.from(document.getElementById('product-images').files).map(file => URL.createObjectURL(file));
-            const points = parseInt(document.getElementById('points').value);
-            const pricePerPoint = parseFloat(document.getElementById('price-per-point').value);
+        document.getElementById('save-product').addEventListener('click', saveProduct);
 
-            const products = JSON.parse(localStorage.getItem('products') || '[]');
-            products.push({
-                name,
-                description,
-                images,
-                points,
-                pricePerPoint,
-                soldPoints: [],
-                finalized: false
-            });
-            localStorage.setItem('products', JSON.stringify(products));
-            loadProducts();
-        });
-
-        window.onload = loadProducts;
+        loadProducts();
     </script>
 </body>
 </html>
